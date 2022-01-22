@@ -61,6 +61,10 @@ def main():
     cnn, layerList = loadCaffemodel(params.model_file, params.pooling, params.gpu, params.disable_check)
 
     content_image = preprocess(params.content_image, params.image_size).type(dtype)
+    imam=deprocess(content_image.clone())
+    imam.save('cont.png')
+
+    
     style_image_input = params.style_image.split(',')
     style_image_list, ext = [], [".jpg", ".jpeg", ".png", ".tiff"]
     for image in style_image_input:
